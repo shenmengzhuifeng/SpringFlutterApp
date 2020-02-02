@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/first_page.dart';
+import 'package:flutter_app/pages/home_page.dart';
+
+import 'pages/person_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -26,12 +29,13 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin{
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
   static List tabData = [
-    {'text': '业界动态', 'icon': new Icon(Icons.language)},
-    {'text': 'WIDGET', 'icon': new Icon(Icons.extension)},
-    {'text': '组件收藏', 'icon': new Icon(Icons.favorite)},
-    {'text': '关于手册', 'icon': new Icon(Icons.import_contacts)}
+    {'text': '首页', 'icon': new Icon(Icons.home)},
+    {'text': '发现', 'icon': new Icon(Icons.explore)},
+    {'text': '购物车', 'icon': new Icon(Icons.shopping_cart)},
+    {'text': '我的', 'icon': new Icon(Icons.person)}
   ];
   TabController controller;
 
@@ -47,8 +51,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       myTabs.add(new Tab(text: tabData[i]['text'], icon: tabData[i]['icon']));
     }
     controller.addListener(() {
-      if (controller.indexIsChanging) {
-      }
+      if (controller.indexIsChanging) {}
     });
   }
 
@@ -56,10 +59,10 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   Widget build(BuildContext context) {
     return new Scaffold(
       body: new TabBarView(controller: controller, children: <Widget>[
+        new HomePage(),
         new FirstPage(),
         new FirstPage(),
-        new FirstPage(),
-        FirstPage()
+        new PersonPage()
       ]),
       bottomNavigationBar: Material(
         color: const Color(0xFFF0EEEF), //底部导航栏主题颜色
