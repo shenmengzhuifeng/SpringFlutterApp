@@ -14,7 +14,6 @@ class Router {
       switch (url) {
         case loginPage:
           return new LoginPage();
-          
         case detailPage:
         case homePage:
       }
