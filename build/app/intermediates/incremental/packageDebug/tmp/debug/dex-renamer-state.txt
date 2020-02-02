@@ -1,0 +1,4 @@
+#Mon Dec 09 21:59:45 CST 2019
+base.0=/my_computer/project/spring_flutter/SpringFlutterApp/build/app/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
+renamed.0=classes.dex
