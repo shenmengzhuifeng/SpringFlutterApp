@@ -1,16 +1,11 @@
-# flutter_app
+flutter实现的前端应用，后台采用Springboot搭建。
 
-A new Flutter application.
 
-## Getting Started
+已实现功能
+--------
+1、登录模块功能，手机验证码发送及登录
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+使用的第三方库
+网络请求：dio
+json解析：json_serializable
+toast提示：fluttertoast
