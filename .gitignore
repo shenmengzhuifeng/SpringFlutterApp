@@ -1,2 +1,4 @@
 .idea/
 android/.gradle/
+build/
+.dart_tool/
