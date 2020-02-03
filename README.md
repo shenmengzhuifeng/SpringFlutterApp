@@ -2,7 +2,8 @@ flutter实现的前端应用，后台采用Springboot搭建。
 
 已实现功能
 --------
-1、登录模块功能，手机验证码发送及登录
+1、登录模块功能，手机验证码发送及登录<br>
+
 <img src="https://github.com/shenmengzhuifeng/SpringFlutterApp/blob/master/screenshot/login.png" width="300" height="533"/>
 
 使用的第三方库
