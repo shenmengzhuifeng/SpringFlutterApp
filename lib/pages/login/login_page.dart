@@ -107,7 +107,10 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _buildVerifyCodeEdit() {
     Widget verifyEdit = new TextField(
-      onChanged: (str) => _verifyCode = str,
+      onChanged: (str) {
+        _verifyCode = str;
+        setState(() {});
+      },
       style: TextStyle(fontSize: 16.0, color: Colors.black54),
       //输入文本的样式
       decoration: new InputDecoration(
@@ -125,20 +128,19 @@ class _LoginPageState extends State<LoginPage> {
     Widget sendVerifyCodeBtn = new InkWell(
       onTap: (_seconds == 0)
           ? () {
-        if(_phoneNum != null){
-          _startTimer();
-        }else{
-          Fluttertoast.showToast(
-              msg: "This is Center Short Toast",
-              toastLength: Toast.LENGTH_SHORT,
-              gravity: ToastGravity.CENTER,
-              timeInSecForIos: 1,
-              backgroundColor: Colors.red,
-              textColor: Colors.white,
-              fontSize: 16.0
-          );
-        }
-      }
+              if (_phoneNum.isNotEmpty) {
+                _startTimer();
+              } else {
+                Fluttertoast.showToast(
+                    msg: "请输入手机号",
+                    toastLength: Toast.LENGTH_LONG,
+                    gravity: ToastGravity.TOP,
+                    timeInSecForIos: 5,
+                    backgroundColor: Colors.black54,
+                    textColor: Colors.white,
+                    fontSize: 16.0);
+              }
+            }
           : null,
       child: new Container(
         alignment: Alignment.center,
@@ -194,6 +196,27 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget _buildLoginButton() {
-
+    return new Padding(
+      padding: const EdgeInsets.only(left: 40.0, right: 40.0, top: 20.0),
+      child: new RaisedButton(
+        color: Colors.blue,
+        textColor: Colors.white,
+        disabledColor: Colors.blue[100],
+        onPressed: (_phoneNum.isEmpty || _verifyCode.isEmpty)
+            ? null
+            : () {
+                login(_phoneNum, _verifyCode);
+              },
+        child: new Text(
+          "登  录",
+          style: new TextStyle(fontSize: 16.0),
+        ),
+      ),
+    );
   }
+
+  /**
+   * 手机号验证码登录
+   */
+  login(String phoneNum, String verifyCode) {}
 }
