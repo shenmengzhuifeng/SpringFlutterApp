@@ -284,7 +284,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget _buildThirdAccountLogin() {
-    new Row(
+    return new Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         new Padding(
@@ -309,19 +309,19 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _buildProtocal() {
     return new Container(
-      padding: const EdgeInsets.only(top: 10.0),
+      padding: const EdgeInsets.only(top: 20.0),
       alignment: Alignment.center,
       child: new Text.rich(new TextSpan(
-          text: "登录即同意",
+          text: "登录即同意:",
           style: new TextStyle(
-              fontSize: 14.0,
+              fontSize: 16.0,
               color: Colors.grey[500],
               fontWeight: FontWeight.w400),
           children: [
             new TextSpan(
-                text: "用户协议",
+                text: " 用户协议",
                 style: new TextStyle(
-                  fontSize: 14.0,
+                  fontSize: 16.0,
                   color: Colors.blue,
                   fontWeight: FontWeight.w400,
                 ))
