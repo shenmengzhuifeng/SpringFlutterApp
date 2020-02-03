@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/http/api.dart';
+import 'package:flutter_app/http/entity/base/base_response.dart';
 import 'package:flutter_app/http/net_utils.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -223,13 +224,40 @@ class _LoginPageState extends State<LoginPage> {
   /**
    * 手机号验证码登录
    */
-  login(String phoneNum, String verifyCode) {}
+  login(String phoneNum, String verifyCode) async {
+    var param = {'mobilePhone': phoneNum, 'verifyCode': verifyCode};
+    var response =
+        await NetUtils.post(Api.REQUEST_HOST + Api.LOGIN_BY_PHONE, param);
+    print(TAG + response.data.toString());
+    BaseResponse baseResponse = BaseResponse.fromJson(response.data);
+    if (baseResponse.resultCode == 0) {
+      Fluttertoast.showToast(
+          msg: "登录成功",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.TOP,
+          timeInSecForIos: 5,
+          backgroundColor: Colors.black54,
+          textColor: Colors.white,
+          fontSize: 16.0);
+      Navigator.pop(context);
+    }
+  }
 
-  Future<void> sendPhoneVerifyCode(String phoneNum) async {
+  Future sendPhoneVerifyCode(String phoneNum) async {
     var param = {'mobilePhone': phoneNum};
     var response = await NetUtils.post(
         Api.REQUEST_HOST + Api.SEND_MOBILE_PHONE_CODE, param);
     print(TAG + response.data.toString());
-
+    BaseResponse baseResponse = BaseResponse.fromJson(response.data);
+    if (baseResponse.resultCode == 0) {
+      Fluttertoast.showToast(
+          msg: "验证码发送成功",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.TOP,
+          timeInSecForIos: 5,
+          backgroundColor: Colors.black54,
+          textColor: Colors.white,
+          fontSize: 16.0);
+    }
   }
 }
