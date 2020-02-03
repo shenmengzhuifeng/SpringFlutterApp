@@ -42,6 +42,9 @@ class _LoginPageState extends State<LoginPage> {
         _buildPhoneEdit(),
         _buildVerifyCodeEdit(),
         _buildLoginButton(),
+        _buildLoginTips(),
+        _buildThirdAccountLogin(),
+        _buildProtocal(),
       ],
     );
   }
@@ -259,5 +262,70 @@ class _LoginPageState extends State<LoginPage> {
           textColor: Colors.white,
           fontSize: 16.0);
     }
+  }
+
+  Widget _buildLoginTips() {
+    return new Padding(
+      padding: const EdgeInsets.only(left: 40.0, right: 40.0, top: 20.0),
+      child: new Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween, //子组件的排列方式为主轴两端对齐
+        children: <Widget>[
+          new Text(
+            "未注册手机验证后自动登录",
+            style: new TextStyle(fontSize: 14.0, color: Colors.grey[500]),
+          ),
+          new Text(
+            "需要帮助",
+            style: new TextStyle(fontSize: 14.0, color: Colors.blue),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildThirdAccountLogin() {
+    new Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        new Padding(
+            padding: const EdgeInsets.only(
+                left: 24.0, top: 60.0, bottom: 12.0, right: 24.0),
+            child: new Image.asset(
+              "assets/images/icon_wx.png",
+              width: 60.0,
+              height: 60.0,
+            )),
+        new Padding(
+            padding: const EdgeInsets.only(
+                left: 24.0, top: 60.0, bottom: 12.0, right: 24.0),
+            child: new Image.asset(
+              "assets/images/icon_sina.png",
+              width: 60.0,
+              height: 60.0,
+            )),
+      ],
+    );
+  }
+
+  Widget _buildProtocal() {
+    return new Container(
+      padding: const EdgeInsets.only(top: 10.0),
+      alignment: Alignment.center,
+      child: new Text.rich(new TextSpan(
+          text: "登录即同意",
+          style: new TextStyle(
+              fontSize: 14.0,
+              color: Colors.grey[500],
+              fontWeight: FontWeight.w400),
+          children: [
+            new TextSpan(
+                text: "用户协议",
+                style: new TextStyle(
+                  fontSize: 14.0,
+                  color: Colors.blue,
+                  fontWeight: FontWeight.w400,
+                ))
+          ])),
+    );
   }
 }
