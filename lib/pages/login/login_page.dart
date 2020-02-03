@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app/http/api.dart';
+import 'package:flutter_app/http/net_utils.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginPage extends StatefulWidget {
@@ -12,6 +14,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  String TAG = '_LoginPageState==>>';
   String _phoneNum = '';
 
   String _verifyCode = '';
@@ -109,6 +112,7 @@ class _LoginPageState extends State<LoginPage> {
     Widget verifyEdit = new TextField(
       onChanged: (str) {
         _verifyCode = str;
+        print(str);
         setState(() {});
       },
       style: TextStyle(fontSize: 16.0, color: Colors.black54),
@@ -130,6 +134,7 @@ class _LoginPageState extends State<LoginPage> {
           ? () {
               if (_phoneNum.isNotEmpty) {
                 _startTimer();
+                sendPhoneVerifyCode(_phoneNum);
               } else {
                 Fluttertoast.showToast(
                     msg: "请输入手机号",
@@ -219,4 +224,12 @@ class _LoginPageState extends State<LoginPage> {
    * 手机号验证码登录
    */
   login(String phoneNum, String verifyCode) {}
+
+  Future<void> sendPhoneVerifyCode(String phoneNum) async {
+    var param = {'mobilePhone': phoneNum};
+    var response = await NetUtils.post(
+        Api.REQUEST_HOST + Api.SEND_MOBILE_PHONE_CODE, param);
+    print(TAG + response.data.toString());
+
+  }
 }
