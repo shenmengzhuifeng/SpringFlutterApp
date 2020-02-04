@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/http/api.dart';
+import 'package:flutter_app/http/entity/account/customer_info.dart';
 import 'package:flutter_app/http/entity/base/base_response.dart';
 import 'package:flutter_app/http/net_utils.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -224,16 +225,15 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  /**
-   * 手机号验证码登录
-   */
+  /// 手机号验证码登录
   login(String phoneNum, String verifyCode) async {
     var param = {'mobilePhone': phoneNum, 'verifyCode': verifyCode};
     var response =
         await NetUtils.post(Api.REQUEST_HOST + Api.LOGIN_BY_PHONE, param);
     print(TAG + response.data.toString());
-    BaseResponse baseResponse = BaseResponse.fromJson(response.data);
-    if (baseResponse.resultCode == 0) {
+    CustomerInfoReply customerInfoReply = CustomerInfoReply.fromJson(response.data);
+    print(customerInfoReply.toString());
+    if (customerInfoReply.resultCode == 0) {
       Fluttertoast.showToast(
           msg: "登录成功",
           toastLength: Toast.LENGTH_LONG,

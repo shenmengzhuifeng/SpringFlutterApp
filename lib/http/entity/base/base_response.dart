@@ -13,11 +13,7 @@ class BaseResponse extends Object {
   @JsonKey(name: 'errorMsg')
   String errorMsg;
 
-  BaseResponse(
-    this.resultCode,
-    this.errorCode,
-    this.errorMsg,
-  );
+  BaseResponse(this.resultCode, this.errorCode, this.errorMsg);
 
   factory BaseResponse.fromJson(Map<String, dynamic> srcJson) =>
       _$BaseResponseFromJson(srcJson);
