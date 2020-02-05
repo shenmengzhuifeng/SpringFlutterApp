@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ExplorePage extends StatefulWidget {
+class MailContackPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _ExplorePageState();
+    return new _MailContackPageState();
   }
 }
 
-class _ExplorePageState extends State<ExplorePage> {
+class _MailContackPageState extends State<MailContackPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(

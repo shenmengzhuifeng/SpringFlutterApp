@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/first_page.dart';
+import 'package:flutter_app/pages/explore_page.dart';
 import 'package:flutter_app/pages/home_page.dart';
+import 'package:flutter_app/pages/mail_contact_page.dart';
 
 import 'pages/person_page.dart';
 
@@ -34,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage>
   static List tabData = [
     {'text': '首页', 'icon': new Icon(Icons.home)},
     {'text': '发现', 'icon': new Icon(Icons.explore)},
-    {'text': '购物车', 'icon': new Icon(Icons.shopping_cart)},
+    {'text': '好友', 'icon': new Icon(Icons.contact_mail)},
     {'text': '我的', 'icon': new Icon(Icons.person)}
   ];
   TabController controller;
@@ -60,8 +62,8 @@ class _MyHomePageState extends State<MyHomePage>
     return new Scaffold(
       body: new TabBarView(controller: controller, children: <Widget>[
         new HomePage(),
-        new FirstPage(),
-        new FirstPage(),
+        new ExplorePage(),
+        new MailContackPage(),
         new PersonPage()
       ]),
       bottomNavigationBar: Material(

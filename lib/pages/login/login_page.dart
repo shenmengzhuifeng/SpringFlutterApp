@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app/account/account_helper.dart';
 import 'package:flutter_app/http/api.dart';
 import 'package:flutter_app/http/entity/account/customer_info.dart';
 import 'package:flutter_app/http/entity/base/base_response.dart';
@@ -234,6 +235,7 @@ class _LoginPageState extends State<LoginPage> {
     CustomerInfoReply customerInfoReply = CustomerInfoReply.fromJson(response.data);
     print(customerInfoReply.toString());
     if (customerInfoReply.resultCode == 0) {
+      AccountHelper.setCustomerInfo(customerInfoReply.response);
       Fluttertoast.showToast(
           msg: "登录成功",
           toastLength: Toast.LENGTH_LONG,

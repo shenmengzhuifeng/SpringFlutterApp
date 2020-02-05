@@ -31,6 +31,7 @@ CustomerInfo _$CustomerInfoFromJson(Map<String, dynamic> json) {
     json['refreshToken'] as String,
     json['tokenExpireTime'] as int,
     json['refreshTokenExpireTime'] as int,
+    json['reply'] as int,
   );
 }
 
@@ -40,4 +41,5 @@ Map<String, dynamic> _$CustomerInfoToJson(CustomerInfo instance) =>
       'refreshToken': instance.refreshToken,
       'tokenExpireTime': instance.tokenExpireTime,
       'refreshTokenExpireTime': instance.refreshTokenExpireTime,
+      'reply': instance.reply,
     };

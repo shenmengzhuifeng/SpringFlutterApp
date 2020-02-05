@@ -37,8 +37,11 @@ class CustomerInfo {
   @JsonKey(name: 'refreshTokenExpireTime')
   int refreshTokenExpireTime;
 
+  @JsonKey(name: 'reply')
+  int reply;//登录  0：实名 1：匿名
+
   CustomerInfo(this.token, this.refreshToken, this.tokenExpireTime,
-      this.refreshTokenExpireTime);
+      this.refreshTokenExpireTime,this.reply);
 
   factory CustomerInfo.fromJson(Map<String, dynamic> srcJson) =>
       _$CustomerInfoFromJson(srcJson);
