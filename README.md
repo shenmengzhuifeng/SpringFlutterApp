@@ -1,4 +1,4 @@
-flutter实现的前端应用，后台采用Springboot搭建。
+flutter实现的前端应用，[后台](https://github.com/shenmengzhuifeng/SpringFlutter)采用Springboot搭建。
 
 已实现功能
 --------
